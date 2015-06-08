@@ -43,20 +43,7 @@
       <li><a href="#" data-dropdown="login" data-options="align:bottom">Belépés</a></li>
     </ul>
     <div id="login" class="f-dropdown small content" data-dropdown-content>
-       <h5>Log In:</h5>
-    <form id="top-nav-login" action="login.xqy" method="post">
-        <div class="row">
-            <label>Email Address</label>
-            <input type="email" name="email" placeholder="email@example.com" tabindex="1"/>
-        </div>
-        <div class="row">
-            <label>Password</label>
-            <input type="password" name="email" placeholder="********" tabindex="2"/>
-        </div>
-        <div class="row">
-            <input type="submit" class="button tiny success" value="Login" tabindex="3"/>
-        </div>
-    </form>
+      
     </div>
     <!-- Left Nav Section -->
     <ul class="left">
