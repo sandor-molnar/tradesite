@@ -4,7 +4,7 @@ class Controller {
 
     function __construct() {
         //echo 'Main controller<br />';
-        $this->view = new View();
+        $this->view = new View(); 
     }
     
     /**
@@ -13,7 +13,7 @@ class Controller {
      * @param string $path Location of the models
      */
     public function loadModel($name, $modelPath = 'models/') {
-        
+        $this->view->name = $name;
         $path = $modelPath . $name.'_model.php';
         
         if (file_exists($path)) {
@@ -21,6 +21,6 @@ class Controller {
             
             $modelName = $name . '_Model';
             $this->model = new $modelName();
-        }        
+        }   
     }
 }

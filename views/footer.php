@@ -1,10 +1,11 @@
 
 
-</div> <!-- MID -->
-<aside class="large-3 columns hide-for-small">
-<p><img src="http://placehold.it/300x440&text=[ad]"/></p>
-<p><img src="http://placehold.it/300x440&text=[ad]"/></p>
-</aside>
+<?php
+$file = (isset($this->name)) ? "views/".$this->name."/custom/footer.php" : "views/index/custom/footer.php";
+if (file_exists($file)) {
+  require $file;
+}
+?>
 </div> <!-- MAIN -->
 <!-- FOOTER START -->
 <footer class="row">
@@ -25,6 +26,11 @@
 </div>
 </div>
 </footer>
+<ul id="langueage" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+  <li <?php echo (Session::get("lang")=="hu") ? 'style="background-color: #008CBA"' : ""; ?>><a href="<?php echo URL ?>profile/setLang/hu"><img src="<?php echo URL ?>lang/hu/flag.gif"> Magyar</a></li>
+  <li <?php echo (Session::get("lang")=="en") ? 'style="background-color: #008CBA"' : ""; ?>><a href="<?php echo URL ?>profile/setLang/en"><img src="<?php echo URL ?>lang/en/flag.gif"> English</a></li>
+  <li <?php echo (Session::get("lang")=="jpn") ? 'style="background-color: #008CBA"' : ""; ?>><a href="<?php echo URL ?>profile/setLang/jpn"><img src="<?php echo URL ?>lang/jpn/flag.gif"> 日本</a></li>
+</ul>
 
 <!-- JAVASCRIPT -->
 <script>

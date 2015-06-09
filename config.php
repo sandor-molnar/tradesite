@@ -6,7 +6,7 @@ define('LIBS', 'libs/');
 
 define('DB_TYPE', 'mysql');
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'tradesite');
+define('DB_NAME', 'tradeit');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 

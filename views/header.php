@@ -39,10 +39,9 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li><a href="#">asd</a></li>
+    <?php if (!isset($_SESSION["username"])) { ?> 
       <li><a href="#" data-reveal-id="login">Belépés</a></li>
-    </ul>
-    <div id="login" class="reveal-modal small" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
+      <div id="login" class="reveal-modal small" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
     <h2>Belépés</h2>
     <form method="POST" action="<?php echo URL."login" ?>">
     <div class="row">
@@ -55,7 +54,7 @@
         </div>
         <div class="row">
             <input type="submit" class="button small success" value="Belépés" tabindex="3"/>
-            <a href="#" data-reveal-id="register" class="button small alert">Regisztráció</a>
+            Még nem vagy tag? Akkor <a href="#" data-reveal-id="register">regisztrálj</a>!
         </div>
     </form>
   <a class="close-reveal-modal" aria-label="Close"><i class="fa fa-times"></i></a>
@@ -82,11 +81,18 @@
         </div>
         <div class="row">
             <input type="submit" class="button small success" value="Regisztráció" tabindex="4"/>
-            <a href="#" data-reveal-id="login" class="button small alert">Belépés</a>
+            Már tag vagy? <a href="#" data-reveal-id="login">Lépj be</a>!
         </div>
     </form>
   <a class="close-reveal-modal" aria-label="Close"><i class="fa fa-times"></i></a>
 </div>
+
+<?php } else { ?>
+  <li><a data-dropdown="user" aria-controls="user" aria-expanded="false"><?php echo $_SESSION["username"] ?></a></li>
+    
+<?php } ?>
+    </ul>
+    
     <!-- Left Nav Section -->
     <ul class="left">
       <li><a href="<?php echo URL ?>">Főoldal</a></li>
@@ -95,34 +101,25 @@
 
 </nav>
 </div>
+<ul id="user" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+    <li><a href="<?php echo URL ?>profile"><i class="fa fa-user"></i> <?php echo LANG_USERMENU_PROFILE ?></a></li>
+    <li><a href="<?php echo URL ?>login/logout"><i class="fa fa-power-off"></i> <?php echo LANG_USERMENU_LOGOUT ?></a></li>
+  </ul>
+<?php
+$file = (isset($this->name)) ? "views/".$this->name."/custom/header.php" : "views/index/custom/header.php";
+if (file_exists($file)) {
+  require $file;
+}
+if (isset($_SESSION["alert"])) {
+        $alert = $_SESSION["alert"];
+        unset($_SESSION["alert"]);
+        echo "
+        <div data-alert class='alert-box {$alert["type"]} radius'>
+          {$alert["text"]}
+          <a href='#' class='close'>&times;</a>
+        </div>
+        ";
+      }
 
- 
-<div class="row" style="margin-top: 10px"> 
-<div class="large-3 columns ">
-<div class="panel orangeblock">
-<a href="#"><img src="http://placehold.it/300x240&text=[img]"/></a>
-<h5><a href="#">Your Name</a></h5>
-<div class="section-container vertical-nav" data-section data-options="deep_linking: false; one_up: true">
-<section class="section">
-<h5 class="title"><a href="#">Section 1</a></h5>
-</section>
-<section class="section">
-<h5 class="title"><a href="#">Section 2</a></h5>
-</section>
-<section class="section">
-<h5 class="title"><a href="#">Section 3</a></h5>
-</section>
-<section class="section">
-<h5 class="title"><a href="#">Section 4</a></h5>
-</section>
-<section class="section">
-<h5 class="title"><a href="#">Section 5</a></h5>
-</section>
-<section class="section">
-<h5 class="title"><a href="#">Section 6</a></h5>
-</section>
-</div>
-</div>
-</div>
-<div class="large-6 columns">
+?>
     
